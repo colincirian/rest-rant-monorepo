@@ -68,8 +68,6 @@ function PlaceDetails() {
 
 	}
 
-
-
 	let comments = (
 		<h3 className="inactive">
 			No comments yet!
@@ -99,6 +97,21 @@ function PlaceDetails() {
 				<CommentCard key={comment.commentId} comment={comment} onDelete={() => deleteComment(comment)} />
 			)
 		})
+	}
+
+	let placeActions = null 
+
+	if(currentUser?.role !== 'admin') {
+		placeActions = (
+			<>
+				<a className="btn btn-warning" onClick={editPlace}>
+					Edit
+				</a>
+				<button type="submit" className="btn btn-danger" onClick={deletePlace}>
+					Delete
+				</button>
+			</>
+		)
 	}
 
 
